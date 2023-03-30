@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+
+        <style>
+            * {
+                box-sizing: border-box;
+            }
+
+            div {
+                width: 100px;
+                height: 40px;
+                background: red;
+                padding: 40px;
+            }
+        </style>
+    </head>
+    <body>
+        <script>
+            const a = 10;
+            const b = 20;
+
+            const person1 = {
+                age: 10,
+                name: 'aa1',
+            };
+            const person2 = {
+                age: 10,
+                name: 'aa2',
+            };
+            const person3 = {
+                age: 10,
+                name: 'a3a',
+            };
+            const person4 = {
+                age: 10,
+                name: 'a4a',
+            };
+
+            function createPersonMaker() {
+                let name = 'a';
+                let age = 0;
+
+                return () => {
+                    name = name + 'a';
+                    return {
+                        name,
+                        age: age++,
+                        speakNameAndAge: function () {
+                            return this.age + this.name;
+                        },
+                    };
+                };
+            }
+
+            function PersonMaker() {
+                (this.age = 10), (this.name = 'aa');
+            }
+            PersonMaker.prototype.speakNameAndAge = function () {
+                return this.age + this.name;
+            };
+            const aa = new PersonMaker();
+
+            console.log(aa.speakNameAndAge());
+
+            const personMaker = createPersonMaker();
+
+            const person5 = personMaker();
+            const person6 = personMaker();
+            const person7 = personMaker();
+
+            const result = [];
+            for (let index = 0; index < 100; index++) {
+                result.push(personMaker());
+            }
+            const people = [person5, person6, person7];
+            console.log(result[0].speakNameAndAge);
+            // const speakNameAndAge = (name, age) => {
+            //     return name + age;
+            // };
+        </script>
+    </body>
+</html>

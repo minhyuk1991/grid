@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.sb-show-main.sb-main-padded {
+    padding: 0;
+}
+
+html,
+body,
+#app {
+    background: #fff;
+    transition: 0.5s;
+}
+
+html.dark #app {
+    background: #333;
+}
+html.dark {
+    background: #333;
+}
+
+html.dark body {
+    width: 100%;
+    height: 100%;
+    background: #333;
+    transition: 0.5s;
+}
+
+/* .cell {
+    padding: 0 20px;
+    background: rebeccapurple;
+    color: white;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+} */
